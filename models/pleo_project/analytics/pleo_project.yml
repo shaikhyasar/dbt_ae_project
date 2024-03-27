@@ -1,0 +1,52 @@
+version: 2
+
+models:
+  - name: mrr_analysis
+    description: This table contains record of customer transactions in specific time
+    columns:
+      - name: id
+        description: ID of the invoice
+      - name: customer_id
+        description: ID of customer
+      - name: type
+        description: transaction type
+      - name: amount
+        description: transaction amount for each day
+      - name: date
+        description: date from period_start till the period_end
+
+  - name: mrr_over_customer
+    description: This table contains record of MRR per month per customer
+    columns:
+      - name: customer_id
+        description: ID of customer
+      - name: amount
+        description: transaction amount for each month
+      - name: date
+        description: month date
+
+  - name: mrr_over_time
+    description: This table contains record of invoice transactions
+    columns:
+      - name: date
+        description: date of transaction accounted
+      - name: week
+        description: week of that transaction happened
+      - name: month
+        description: transaction month
+      - name: quarter
+        description: quarter when the transaction accounted
+      - name: year
+        description: transaction year
+      - name: amount
+        description: transaction amount
+
+  - name: tracking_mrr_over_time
+    description: This table is well defined data from mrr_over_time
+    columns:
+      - name: date
+        description: date of transaction accounted
+      - name: date_part
+        description: which part teh transaction happened, i.e, daily, weekly, monthly, quarterly, yearly
+      - name: amount
+        description: transaction amount

@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: sales_data
+    schema: billing_data
+    database: ae-hiring-challenge-project5
+    tables:
+        - name: invoice
+        - name: invoice_item
