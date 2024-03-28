@@ -38,5 +38,8 @@ with
                 end
             ) as n
     )
-select *
+select customer_id, type, date, round(sum(amount), 2) as amount
 from each_day_record
+group by 1, 2, 3
+
+-- SELECT * FROM each_day_record
