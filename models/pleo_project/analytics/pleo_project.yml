@@ -4,14 +4,21 @@ models:
   - name: mrr_analysis
     description: This table contains record of customer transactions in specific time
     columns:
-      - name: id
-        description: ID of the invoice
       - name: customer_id
         description: ID of customer
+        tests:
+          - relationships:
+              to: ref('invoice')
+              field: string_field_1
       - name: type
         description: transaction type
+        tests:
+          - accepted_values:
+              values: ['subscription','invoiceitem']
       - name: amount
         description: transaction amount for each day
+        tests:
+          - not_null
       - name: date
         description: date from period_start till the period_end
 
@@ -20,8 +27,14 @@ models:
     columns:
       - name: customer_id
         description: ID of customer
+        tests:
+          - relationships:
+              to: ref('invoice')
+              field: string_field_1
       - name: amount
         description: transaction amount for each month
+        tests:
+          - not_null
       - name: date
         description: month date
 
@@ -32,14 +45,29 @@ models:
         description: date of transaction accounted
       - name: week
         description: week of that transaction happened
+        tests:
+          - not_null
       - name: month
         description: transaction month
+        tests:
+          - accepted_values:
+              values: [1,2,3,4,5,6,7,8,9,10,11,12]
+              quote: false
       - name: quarter
         description: quarter when the transaction accounted
+        tests:
+          - accepted_values:
+              values: [1,2,3,4]
+              quote: false
       - name: year
         description: transaction year
+        tests:
+          - not_null
       - name: amount
         description: transaction amount
+        tests:
+          - not_null
+
 
   - name: tracking_mrr_over_time
     description: This table is well defined data from mrr_over_time
@@ -48,5 +76,10 @@ models:
         description: date of transaction accounted
       - name: date_part
         description: which part teh transaction happened, i.e, daily, weekly, monthly, quarterly, yearly
+        tests:
+          - accepted_values:
+              values: ['daily', 'weekly', 'monthly', 'quarterly', 'yearly']
       - name: amount
         description: transaction amount
+        tests:
+          - not_null
