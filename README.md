@@ -1,8 +1,8 @@
 # This documentation disucss about handling MRR record of a pleo company!
 
 Table of Contents
-1. [Model Structure](#model_structure)
-2. [Data Quality](#data_quality)
+1. [Model Structure](#model-structure)
+2. [Data Quality](#data-quality)
 
 ## Model Structure
 Once, completing initial setup, We wil start working on the building dbt model.
